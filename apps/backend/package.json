@@ -6,7 +6,7 @@
     "test": "jest",
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate --schema=../../packages/db/prisma/schema.prisma"
   },
   "keywords": [],
   "author": "",

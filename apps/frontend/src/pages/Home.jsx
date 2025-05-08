@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export default function Home() {
   const [listings, setListings] = useState([]);
-  const userId = localStorage.getItem('userId'); // current user from login
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
     fetch('http://localhost:3000/api/listings')
@@ -35,9 +35,11 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Marketplace Listings</h1>
+      <h1>Marketplace 2.0</h1>
       {listings.length === 0 ? (
-        <p>No listings yet.</p>
+        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+          <p>No listings yet.</p>
+        </div>
       ) : (
         listings.map(listing => (
           <div key={listing.id} className="listing">
@@ -50,7 +52,7 @@ export default function Home() {
             <p>{listing.description}</p>
             <p><strong>Price:</strong> €{listing.price}</p>
             {listing.imageUrl && <img src={listing.imageUrl} alt="listing" width="200" />}
-            <p><i>Owner ID:</i> {listing.ownerId}</p>
+            <p><i>Owner: </i> {listing.ownerId}</p>
 
             {String(listing.ownerId) === userId && (
               <div style={{ marginTop: 8 }}>

@@ -20,5 +20,8 @@
   "homepage": "https://github.com/5G00EV16-3004/2025-final-project-street-magician#readme",
   "devDependencies": {
     "turbo": "^2.5.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.7.0"
   }
 }

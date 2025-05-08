@@ -5,7 +5,7 @@ export default function Home() {
   const userId = localStorage.getItem('userId');
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/listings')
+    fetch('${API_URL}/api/listings')
       .then(res => res.json())
       .then(data => setListings(data))
       .catch(err => console.error('Failed to fetch listings', err));
@@ -17,7 +17,7 @@ export default function Home() {
 
     const token = localStorage.getItem('token');
 
-    const res = await fetch(`http://localhost:3000/api/listings/${id}`, {
+    const res = await fetch(`${API_URL}/api/listings/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,

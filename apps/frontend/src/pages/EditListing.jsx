@@ -8,7 +8,7 @@ export default function EditListing() {
   const [image, setImage] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/listings/${id}`)
+    fetch(`${API_URL}/api/listings/${id}`)
       .then(res => res.json())
       .then(data => setListing(data))
       .catch(err => console.error('Failed to fetch listing', err));
@@ -17,7 +17,7 @@ export default function EditListing() {
   const uploadImage = async () => {
     const formData = new FormData();
     formData.append('image', image);
-    const res = await fetch('http://localhost:3000/api/upload', {
+    const res = await fetch('${API_URL}/api/upload', {
       method: 'POST',
       body: formData,
     });
@@ -34,7 +34,7 @@ export default function EditListing() {
       imageUrl = await uploadImage();
     }
 
-    const res = await fetch(`http://localhost:3000/api/listings/${id}`, {
+    const res = await fetch(`${API_URL}/api/listings/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

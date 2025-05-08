@@ -6,7 +6,7 @@ export default function ListingDetail() {
   const [listing, setListing] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/listings/${id}`)
+    fetch(`${API_URL}/api/listings/${id}`)
       .then(res => res.json())
       .then(data => setListing(data))
       .catch(err => console.error('Failed to fetch listing', err));

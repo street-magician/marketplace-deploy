@@ -6,7 +6,7 @@ export default function ListingDetail() {
   const [listing, setListing] = useState(null);
 
   useEffect(() => {
-    fetch(`${API_URL}/api/listings/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/listings/${id}`)
       .then(res => res.json())
       .then(data => setListing(data))
       .catch(err => console.error('Failed to fetch listing', err));

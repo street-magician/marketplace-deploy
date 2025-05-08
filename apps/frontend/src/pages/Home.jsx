@@ -5,7 +5,7 @@ export default function Home() {
   const userId = localStorage.getItem('userId');
 
   useEffect(() => {
-    fetch('${import.meta.env.VITE_API_URL}/api/listings')
+    fetch(`${import.meta.env.VITE_API_URL}/api/listings`)
       .then(res => res.json())
       .then(data => setListings(data))
       .catch(err => console.error('Failed to fetch listings', err));

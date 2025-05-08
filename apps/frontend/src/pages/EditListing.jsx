@@ -17,7 +17,7 @@ export default function EditListing() {
   const uploadImage = async () => {
     const formData = new FormData();
     formData.append('image', image);
-    const res = await fetch('${import.meta.env.VITE_API_URL}/api/upload', {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, {
       method: 'POST',
       body: formData,
     });

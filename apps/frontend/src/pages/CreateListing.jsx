@@ -19,7 +19,7 @@ export default function CreateListing() {
     const formData = new FormData();
     formData.append('image', image);
 
-    const res = await fetch('${import.meta.env.VITE_API_URL}/api/upload', {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, {
       method: 'POST',
       body: formData,
     });
@@ -38,7 +38,7 @@ export default function CreateListing() {
 
     const token = localStorage.getItem('token');
 
-    const res = await fetch('${import.meta.env.VITE_API_URL}/api/listings', {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/listings`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

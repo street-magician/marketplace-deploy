@@ -5,7 +5,7 @@ export default function MyListings() {
     const userId = localStorage.getItem('userId');
 
     useEffect(() => {
-        fetch('${import.meta.env.VITE_API_URL}/api/listings')
+        fetch(`${import.meta.env.VITE_API_URL}/api/listings`)
             .then(res => res.json())
             .then(data => {
                 const owned = data.filter(listing => String(listing.ownerId) === userId);

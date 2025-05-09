@@ -81,6 +81,7 @@ export default function CreateListing() {
       />
       <input
         type="file"
+        placeholder=".jpg files only!"
         accept="image/*"
         onChange={(e) => setImage(e.target.files[0])}
       />

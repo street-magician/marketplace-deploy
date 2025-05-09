@@ -15,11 +15,25 @@ const storage = new CloudinaryStorage({
 const upload = multer({ storage });
 
 router.post('/', upload.single('image'), (req, res) => {
-  if (!req.file || !req.file.path) {
-    return res.status(400).json({ error: 'Image upload failed' });
-  }
+  try {
+    if (!req.file) {
+      console.error('❌ No file uploaded');
+      return res.status(400).json({ error: 'No image uploaded' });
+    }
 
-  res.json({ imageUrl: req.file.path });
+    console.log('✅ Uploaded file info:', req.file);
+
+    const imageUrl = req.file.path || req.file.secure_url;
+
+    if (!imageUrl) {
+      return res.status(500).json({ error: 'Failed to retrieve image URL from Cloudinary' });
+    }
+
+    res.status(200).json({ imageUrl });
+  } catch (err) {
+    console.error('❌ Upload error:', err);
+    res.status(500).json({ error: 'Image upload failed', detail: err.message });
+  }
 });
 
 module.exports = router;

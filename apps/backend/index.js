@@ -14,8 +14,18 @@ const PORT = process.env.PORT || 3000;
 
 const prisma = new PrismaClient();
 
-app.use(cors());
+const corsOptions = {
+  origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173',
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
+
+app.use((req, res, next) => {
+  console.log(`[${req.method}] ${req.url}`);
+  next();
+});
 
 app.use('/api/listings', listingRoutes);
 app.use('/api/auth', authRoutes);

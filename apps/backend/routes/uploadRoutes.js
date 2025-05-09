@@ -31,9 +31,9 @@ router.post('/', upload.single('image'), (req, res) => {
 
     res.status(200).json({ imageUrl });
   } catch (err) {
-    console.error('❌ Upload error:', err);
-    res.status(500).json({ error: 'Image upload failed', detail: err.message });
-  }
+    console.error('❌ Upload error:', JSON.stringify(err, null, 2)); 
+    res.status(500).json({ error: 'Image upload failed', detail: err.message || 'Unknown error' });
+  }  
 });
 
 module.exports = router;

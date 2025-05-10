@@ -5,6 +5,7 @@ Marketplace 2.0
 A full-stack online marketplace application where users can register, log in, create, view, edit, and delete listings. Built with a react frontend, node.js backend, postgreSQL database, and deployed on Railway.
 Live Demo:
 https://marketplace-deploy-production.up.railway.app
+
 Features
 
     - User authentication (JWT-based)
